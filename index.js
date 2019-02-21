@@ -11,6 +11,8 @@ const targetStatus = [
   'STATUS_UNKNOWN'
 ];
 
+const DEFAULT_GITHUB_CHECK = 'default-github-check';
+
 module.exports.subscribeBuilds = event => {
   const build = eventToBuild(event.data);
   console.log(build);
@@ -61,10 +63,15 @@ const createFields = build => {
       title: 'Status',
       value: `${build.status} ${statusEmoji(build.status)}`,
       short: true
+    },
+    {
+      title: 'Project',
+      value: build.projectId,
+      short: true
     }
   ];
 
-  if (build.substitutions) {
+  if (build.buildTriggerId === DEFAULT_GITHUB_CHECK) {
     fields.push(
       {
         title: 'Repository',
@@ -82,7 +89,28 @@ const createFields = build => {
         short: true
       }
     );
+    if (build.substitutions.TAG_NAME) {
+      fields.push({
+        title: 'Tag',
+        value: build.substitutions.TAG_NAME,
+        short: true
+      });
+    }
+  } else {
+    fields.push(
+      {
+        title: 'Repository',
+        value: build.source.repoSource.repoName,
+        short: true
+      },
+      {
+        title: 'Branch',
+        value: build.source.repoSource.branchName,
+        short: true
+      }
+    );
   }
+
   return fields;
 };
 
