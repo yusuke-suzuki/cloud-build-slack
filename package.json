@@ -1,8 +1,13 @@
 {
   "name": "cloud-build-slack",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "test": "jest"
+  },
   "dependencies": {
     "@slack/client": "^4.9.0"
+  },
+  "devDependencies": {
+    "jest": "^24.1.0"
   }
 }
