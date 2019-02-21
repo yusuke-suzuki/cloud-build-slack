@@ -1,0 +1,8 @@
+{
+  "name": "cloud-build-slack",
+  "license": "MIT",
+  "scripts": {},
+  "dependencies": {
+    "@slack/client": "^4.9.0"
+  }
+}
