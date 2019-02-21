@@ -11,7 +11,7 @@ const targetStatus = [
   'STATUS_UNKNOWN'
 ];
 
-const DEFAULT_GITHUB_CHECK = 'default-github-check';
+const DEFAULT_GITHUB_CHECK = 'default-github-checks';
 
 module.exports.subscribeBuilds = event => {
   const build = eventToBuild(event.data);
