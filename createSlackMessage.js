@@ -56,7 +56,7 @@ const createFields = build => {
         short: true
       });
     }
-  } else if (build.source) {
+  } else if (build.source && build.source.repoSource) {
     fields.push(
       {
         title: 'Repository',
