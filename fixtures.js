@@ -136,9 +136,77 @@ const buildViaUserCreatedTrigger = {
   }
 };
 
+const buildViaCli = {
+  id: '1a1a45a4-0e7d-558a-a449-c554a1111111',
+  projectId: 'my-project-0000',
+  status: 'SUCCESS',
+  source: {
+    storageSource: {
+      bucket: 'my-project-1111_cloudbuild',
+      object: 'source/1111052222.96-08cb25db20174dfaa11110401111bcc6.tgz',
+      generation: '1111118890211111'
+    }
+  },
+  steps: [
+    {
+      name: 'gcr.io/cloud-builders/gcloud',
+      args: [],
+      entrypoint: 'bash',
+      timing: {},
+      pullTiming: {},
+      status: 'SUCCESS'
+    }
+  ],
+  results: {
+    buildStepImages: ['sha256:11111', '', 'sha256:00000'],
+    buildStepOutputs: []
+  },
+  createTime: '2019-04-12T08:48:10.752959242Z',
+  startTime: '2019-04-12T08:48:11.562423831Z',
+  finishTime: '2019-04-12T08:51:28.183099Z',
+  timeout: '600s',
+  logsBucket: 'gs://111111.cloudbuild-logs.googleusercontent.com',
+  sourceProvenance: {
+    resolvedStorageSource: {
+      bucket: '1111111.cloudbuild-source.googleusercontent.com',
+      object:
+        '947c201add0fef823ad26ef205940d1fa91538d6-73f80db2-b1dd-4f0d-bb6c-b9c52b31f704.tar.gz',
+      generation: '11111111111'
+    },
+    fileHashes: {
+      'gs://11111111.cloudbuild-source.googleusercontent.com/947c201add0fef823ad26ef205940d1fa91538d6-73f80db2-b1dd-4f0d-bb6c-b9c52b31f704.tar.gz#1550734438240334': {}
+    }
+  },
+  options: { logging: 'LEGACY' },
+  logUrl:
+    'https://console.cloud.google.com/gcr/builds/91cb789e-2839-4641-bd31-0b2aaa649f78?project=0000000',
+  substitutions: {
+    BRANCH_NAME: 'test-branch',
+    REPO_NAME: 'my_repo'
+  },
+  secrets: [
+    {
+      kmsKeyName:
+        'projects/my-project-0000/locations/global/keyRings/my-keyring/cryptoKeys/my-key',
+      secretEnv: {}
+    }
+  ],
+  timing: {
+    BUILD: {
+      startTime: '2019-04-12T08:48:15.404661589Z',
+      endTime: '2019-04-12T08:51:26.889424039Z'
+    },
+    FETCHSOURCE: {
+      startTime: '2019-04-12T08:48:12.719971137Z',
+      endTime: '2019-04-12T08:48:15.320727032Z'
+    }
+  }
+};
+
 module.exports = {
   buildSuccess,
   buildFailure,
   buildViaGitHub,
-  buildViaUserCreatedTrigger
+  buildViaUserCreatedTrigger,
+  buildViaCli
 };

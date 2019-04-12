@@ -4,7 +4,8 @@ const {
   buildSuccess,
   buildFailure,
   buildViaGitHub,
-  buildViaUserCreatedTrigger
+  buildViaUserCreatedTrigger,
+  buildViaCli
 } = require('./fixtures');
 
 describe('Create slack message for each build status', () => {
@@ -54,5 +55,13 @@ describe('Get repo info from each trigger type', () => {
     expect(attachment.fields[2].value).toBeDefined();
     expect(attachment.fields[3].title).toBe('Branch');
     expect(attachment.fields[3].value).toBeDefined();
+  });
+
+  test('Build via CLI (gcloud builds submit)', () => {
+    const message = createSlackMessage(buildViaCli);
+    const attachment = message.attachments[0];
+
+    expect(attachment.fields[1].title).toBe('Project');
+    expect(attachment.fields[1].value).toBeDefined();
   });
 });
