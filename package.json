@@ -8,6 +8,6 @@
     "@slack/client": "^4.9.0"
   },
   "devDependencies": {
-    "jest": "^24.1.0"
+    "jest": "^24.9.0"
   }
 }
