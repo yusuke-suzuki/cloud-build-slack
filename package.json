@@ -5,7 +5,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@slack/client": "^4.9.0"
+    "@slack/client": "^5.0.2"
   },
   "devDependencies": {
     "jest": "^24.9.0"

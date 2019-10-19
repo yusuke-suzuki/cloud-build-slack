@@ -1,5 +1,3 @@
-const DEFAULT_GITHUB_CHECK = 'default-github-checks';
-
 // createSlackMessage create a message from a build object.
 const createSlackMessage = build => {
   let message = {
@@ -28,47 +26,30 @@ const createFields = build => {
       title: 'Project',
       value: build.projectId,
       short: true
+    },
+    {
+      title: 'Repository',
+      value: build.substitutions.REPO_NAME,
+      short: true
+    },
+    {
+      title: 'Branch',
+      value: build.substitutions.BRANCH_NAME,
+      short: true
+    },
+    {
+      title: 'Commit',
+      value: build.substitutions.SHORT_SHA,
+      short: true
     }
   ];
 
-  if (build.buildTriggerId === DEFAULT_GITHUB_CHECK) {
-    fields.push(
-      {
-        title: 'Repository',
-        value: build.substitutions.REPO_NAME,
-        short: true
-      },
-      {
-        title: 'Branch',
-        value: build.substitutions.BRANCH_NAME,
-        short: true
-      },
-      {
-        title: 'Commit',
-        value: build.substitutions.SHORT_SHA,
-        short: true
-      }
-    );
-    if (build.substitutions.TAG_NAME) {
-      fields.push({
-        title: 'Tag',
-        value: build.substitutions.TAG_NAME,
-        short: true
-      });
-    }
-  } else if (build.source && build.source.repoSource) {
-    fields.push(
-      {
-        title: 'Repository',
-        value: build.source.repoSource.repoName,
-        short: true
-      },
-      {
-        title: 'Branch',
-        value: build.source.repoSource.branchName,
-        short: true
-      }
-    );
+  if (build.substitutions.TAG_NAME) {
+    fields.push({
+      title: 'Tag',
+      value: build.substitutions.TAG_NAME,
+      short: true
+    });
   }
 
   return fields;
