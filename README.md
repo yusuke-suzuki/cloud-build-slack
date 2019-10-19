@@ -26,5 +26,5 @@ FAILURE_EMOJI: ":your-custom-emoji:"
 ```
 gcloud config set project <Your Project ID>
 
-gcloud functions deploy subscribeBuilds --trigger-topic cloud-builds --runtime nodejs8 --env-vars-file .env.yaml --region <Target region>
+gcloud functions deploy subscribeBuilds --trigger-topic cloud-builds --runtime nodejs10 --env-vars-file .env.yaml --region <Target region>
 ```
